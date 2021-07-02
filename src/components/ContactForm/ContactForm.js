@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import styles from "./ContactForm.module.css";
 import {
   addNewContacts,
@@ -7,11 +6,9 @@ import {
 } from "../../redux/contacts/contacts.operations";
 import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
+import { contactsItemsSelector, loadingSelector } from "../../redux/contacts/contacts.selector";
 
 class ContactForm extends Component {
-  static propTypes = {
-    handleSubmit: PropTypes.func.isRequired,
-  };
   state = {
     name: "",
     number: "",
@@ -96,8 +93,8 @@ class ContactForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    items: state.items,
-    loading: state.loading,
+    items: contactsItemsSelector(state),
+    loading: loadingSelector(state),
   };
 };
 

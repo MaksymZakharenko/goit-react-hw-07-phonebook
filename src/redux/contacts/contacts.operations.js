@@ -11,9 +11,9 @@ import {
   removeContactsError,
 } from "./contacts.actions";
 
-axios.defaults.baseURL = "http://localhost:3000/";
+axios.defaults.baseURL = "http://localhost:3001/";
 
-const addNewContacts = (contact) => async (dispatch, getState) => {
+const addNewContacts = (contact) => async (dispatch) => {
   dispatch(addNewContactsRequest());
   try {
     const { data } = await axios.post("contacts", contact);
